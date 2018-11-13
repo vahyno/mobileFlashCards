@@ -52,7 +52,6 @@ class Decks extends React.Component {
 
         return(
             <View style={styles.container}>
-                <Text>Decks:</Text>
                 <FlatList
                     data={decks}
                     renderItem={this.renderItem}
