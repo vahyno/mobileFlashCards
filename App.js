@@ -9,7 +9,7 @@ import AddNewDeck from './components/AddNewDeck';
 import DeckDetail from './components/DeckDetail';
 import Quiz from './components/Quiz';
 import AddCard from './components/AddCard';
-
+import {white, blue, gold, purple, red} from './utils/colors';
 
 const FlashCardStatusBar = ({backgroundColor, ...props}) => (
   <View style={{backgroundColor, height: Constants.statusBarHeight}}>
@@ -37,10 +37,10 @@ const TabsIos = createBottomTabNavigator({
       header: null,
     },
     tabBarOptions: {
-      activeTintColor: 'blue',
+      activeTintColor: blue,
       style: {
         height: 50,
-        backgroundColor: 'gold',
+        backgroundColor: gold,
         shadowColor: 'rgba(0,0,0,0.24)',
         shadowOffset: {
           width: 0,
@@ -72,10 +72,10 @@ const TabsAndroid = createMaterialTopTabNavigator({
       header: null,
     },
     tabBarOptions: {
-      activeTintColor: 'white',
+      activeTintColor: white,
       style: {
         height: 50,
-        backgroundColor: 'purple',
+        backgroundColor: purple,
         shadowColor: 'rgba(0,0,0,0.24)',
         shadowOffset: {
           width: 0,
@@ -98,9 +98,9 @@ const MainNavigator = createStackNavigator({
   DeckDetail: {
     screen: DeckDetail,
     navigationOptions: {
-      headerTintColor: 'white',
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: 'blue'
+        backgroundColor: blue
       },
       headerBackTitle: 'Back'
     }
@@ -108,18 +108,18 @@ const MainNavigator = createStackNavigator({
   Quiz: {
     screen: Quiz,
     navigationOptions: {
-      headerTintColor: 'white',
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: 'blue'
+        backgroundColor: blue
       }
     }
   },
   AddCard: {
     screen: AddCard,
     navigationOptions: {
-      headerTintColor: 'white',
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: 'blue'
+        backgroundColor: blue
       }
     }
   },
@@ -130,7 +130,7 @@ export default class App extends React.Component {
     return (
       <View style={{flex: 1}}>
         <FlashCardStatusBar 
-          backgroundColor={'red'}
+          backgroundColor={red}
           barStyle='light-content'/>
         <MainNavigator />
       </View>
