@@ -132,10 +132,10 @@ export default class App extends React.Component {
         <FlashCardStatusBar 
           backgroundColor={red}
           barStyle='light-content'/>
-        {/* <MainNavigator /> */}
+        <MainNavigator />
         {/* <DeckDetail/> */}
         {/* <AddCard /> */}
-        <Quiz />
+        {/* <Quiz /> */}
       </View>
     );
   }
