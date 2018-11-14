@@ -132,7 +132,8 @@ export default class App extends React.Component {
         <FlashCardStatusBar 
           backgroundColor={red}
           barStyle='light-content'/>
-        <MainNavigator />
+        {/* <MainNavigator /> */}
+        <DeckDetail/>
       </View>
     );
   }
