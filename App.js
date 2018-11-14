@@ -3,6 +3,11 @@ import {View, Platform, StatusBar} from 'react-native';
 import {Constants} from 'expo';
 import {createMaterialTopTabNavigator, createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 import {Ionicons, AntDesign, MaterialCommunityIcons, MaterialIcons} from '@expo/vector-icons';
+
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+
+
 import Decks from './components/Decks';
 import Deck from './components/Deck';
 import AddNewDeck from './components/AddNewDeck';
