@@ -4,26 +4,31 @@ import {gold, green, red, pink, grey} from '../utils/colors';
 
 class QuizCard extends React.Component {
     state={
-        showAnswer: false
+        showAnswer: false,
     }
     
     handleShowAnswer = () => {
         this.setState({
-            showAnswer: true
+            showAnswer: true,
         });
     }
 
+    handleSubmit = (handleAnswer) => {
+        this.setState({showAnswer: false});
+        handleAnswer();
+    }
+
     render(){
-        //todo get Deckname, cardCount, Q & A from props
         const {showAnswer} = this.state;
+        const {deckName, card, currentCardNum, sumOfCards, handleCorrect, handleIncorrect} = this.props;
         return(
             <View style={styles.container}>
-                <Text style={styles.title}>Deck Name</Text>
-                <Text style={styles.cardCount}>1/10</Text>
-                <Text style={styles.question}>Question</Text>
+                <Text style={styles.title}>{deckName}</Text>
+                <Text style={styles.cardCount}>{`${currentCardNum}/${sumOfCards}`}</Text>
+                <Text style={styles.question}>{card.question}</Text>
 
                 {showAnswer
-                    ?<Text style={styles.answer}>This it the answer</Text>
+                    ?<Text style={styles.answer}>{card.answer}</Text>
 
                     :<TouchableOpacity
                         style={[styles.btn, {backgroundColor: gold}]}
@@ -36,14 +41,14 @@ class QuizCard extends React.Component {
 
                 <TouchableOpacity
                     style={[styles.btn, {backgroundColor: green}]}
-                    onPress={()=> alert('Correct Answer')}>
+                    onPress={() => this.handleSubmit(handleCorrect)}>
                     <Text style={styles.btnText}>
                         Correct Answer
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.btn, {backgroundColor: red}]}
-                    onPress={()=> alert('Wrong Answer')}>
+                    onPress={() => this.handleSubmit(handleIncorrect)}>
                     <Text style={styles.btnText}>
                         Wrong Answer
                     </Text>

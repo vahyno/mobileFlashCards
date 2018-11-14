@@ -3,15 +3,17 @@ import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 import {grey, green, lightBlue, lightPurple} from '../utils/colors';
 
 class QuizResults extends React.Component {
-    //todo: hookup restart quiz, back to deck
+    //todo: back to deck => navigation
     render(){
+        const {resetQuiz, correctCount, cardCount} = this.props;
+        const score = (correctCount/cardCount*100).toFixed(2);
         return(
             <View style={styles.container}>
                 <Text style={styles.title}>Quiz Complete</Text>
-                <Text style={styles.score}>Score 50%</Text>
+                <Text style={styles.score}>{`Score ${score}%`}</Text>
                 <TouchableOpacity
                     style={[styles.btn, {backgroundColor: lightBlue}]}
-                    onPress={()=> alert('Restart Quiz')}>
+                    onPress={resetQuiz}>
                     <Text style={styles.btnText}>
                         Restart Quiz
                     </Text>
