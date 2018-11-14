@@ -134,7 +134,8 @@ export default class App extends React.Component {
           barStyle='light-content'/>
         {/* <MainNavigator /> */}
         {/* <DeckDetail/> */}
-        <AddCard />
+        {/* <AddCard /> */}
+        <Quiz />
       </View>
     );
   }
