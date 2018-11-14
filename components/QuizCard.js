@@ -38,21 +38,22 @@ class QuizCard extends React.Component {
                         </Text>
                     </TouchableOpacity>
                 }
-
-                <TouchableOpacity
-                    style={[styles.btn, {backgroundColor: green}]}
-                    onPress={() => this.handleSubmit(handleCorrect)}>
-                    <Text style={styles.btnText}>
-                        Correct Answer
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={[styles.btn, {backgroundColor: red}]}
-                    onPress={() => this.handleSubmit(handleIncorrect)}>
-                    <Text style={styles.btnText}>
-                        Wrong Answer
-                    </Text>
-                </TouchableOpacity>
+                <View style={{flexDirection: 'row'}}>
+                    <TouchableOpacity
+                        style={[styles.btns, {marginEnd: 5, backgroundColor: green}]}
+                        onPress={() => this.handleSubmit(handleCorrect)}>
+                        <Text style={styles.btnText}>
+                            Correct Answer
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[styles.btns, {backgroundColor: red}]}
+                        onPress={() => this.handleSubmit(handleIncorrect)}>
+                        <Text style={styles.btnText}>
+                            Wrong Answer
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 20,
         padding: 10,
-        marginBottom: 30,
+        marginBottom: 20,
     },
     btn: {
         paddingTop: 10,
@@ -94,6 +95,13 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         margin: 10,
+        borderColor: grey,
+        borderWidth: 1,
+        borderRadius: 10,
+    },
+    btns: {
+        padding: 10,
+        marginTop: 10,
         borderColor: grey,
         borderWidth: 1,
         borderRadius: 10,
