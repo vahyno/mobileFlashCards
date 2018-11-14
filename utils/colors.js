@@ -7,3 +7,6 @@ export const red = 'red';
 export const gold = 'gold';
 export const purple = 'purple';
 export const grey = 'grey';
+export const green = 'green';
+export const yellow = 'yellow';
+
