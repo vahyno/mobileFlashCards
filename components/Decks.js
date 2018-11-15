@@ -8,7 +8,6 @@ import {blue, lightPurple} from '../utils/colors';
 class Decks extends React.Component {
 
     componentDidMount (){
-        //todo get me all the decks
         this.props.dispatch(handleIntialData());
     }
 
@@ -18,38 +17,31 @@ class Decks extends React.Component {
                 deckName={item.deckName}
                 cardCount={item.cards? item.cards.length : 0}
             />
-        )
+        )   
     }
 
     render(){
         //todo: implement redux
         const {decks} = this.props;
-        //dummy data:
-        // const decks = [
-            // {
-            //   deckName: 'deckName 1',
-            //   cards: [1],
-            // }
-        //   ];
 
-        // if (!decks.length) {
-        //     return (
-        //         <View style={styles.noData}>
-        //             <Text style={{fontSize: 30}}>
-        //                 Please Add New Deck
-        //             </Text>
-        //         </View>
-        //     )
-        // }
+        if (!decks.length) {
+            return (
+                <View style={styles.noData}>
+                    <Text style={{fontSize: 30}}>
+                        Please Add New Deck
+                    </Text>
+                </View>
+            )
+        }
 
         return(
             <View style={styles.container}>
                 <Text style={{backgroundColor: '#fff'}}>{JSON.stringify(decks)}</Text>
-                {/* <FlatList
+                <FlatList
                     data={decks}
                     renderItem={this.renderItem}
                     keyExtractor={item => item.deckName}
-                /> */}
+                />
             </View>
         );
     }
