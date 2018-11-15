@@ -6,11 +6,11 @@ import {pink, grey, gold, red} from '../utils/colors';
 class DeckDetail extends React.Component {
     render(){
         //todo: get: #of cards
-        const {deckName} = this.props;
+        const {deckName, cards, navigation} = this.props;
         
         //dummy
         // let deckName = 'Redux Fundamentals'
-        let cards = [1]
+        //let cards = [1]
         // conect to Redux const {deckName, cards} = this.props;
 
         return(
@@ -28,7 +28,7 @@ class DeckDetail extends React.Component {
                 { cards.length > 0 && 
                     <TouchableOpacity
                         style={styles.btn}
-                        onPress={() => this.props.navigation.navigate('Quiz', {deckName})}>
+                        onPress={() => navigation.navigate('Quiz', {deckName})}>
                         <Text style={styles.btnText}>
                             Start Quiz
                         </Text>
@@ -36,7 +36,7 @@ class DeckDetail extends React.Component {
                 }
                 <TouchableOpacity
                     style={styles.btn}
-                    onPress={() => this.props.navigation.navigate('AddCard', {deckName})}>
+                    onPress={() => navigation.navigate('AddCard', {deckName})}>
                     <Text style={styles.btnText}>
                         Add New Card
                     </Text>
@@ -84,9 +84,10 @@ const styles = StyleSheet.create({
 function mapStateToProps(state, {navigation}) {
     const {deckName} = navigation.state.params;
     return {
-        state, //delete 
+        state: state[deckName],//delete 
         deckName,
-        cards: state[deckName].cards,
+        //cards: to prevent error when new deck is created
+        cards: state[deckName] ? state[deckName].cards : []
     }
 }
 

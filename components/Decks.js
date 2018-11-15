@@ -22,7 +22,6 @@ class Decks extends React.Component {
     }
 
     render(){
-        //todo: implement redux
         const {decks} = this.props;
 
         if (!decks.length) {
@@ -37,7 +36,7 @@ class Decks extends React.Component {
 
         return(
             <View style={styles.container}>
-                <Text style={{backgroundColor: '#fff'}}>{JSON.stringify(decks)}</Text>
+                {/* <Text style={{backgroundColor: '#fff'}}>{JSON.stringify(decks)}</Text> */}
                 <FlatList
                     data={decks}
                     renderItem={this.renderItem}
