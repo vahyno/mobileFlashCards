@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import QuizCard from './QuizCard';
 import QuizResults from './QuizResults';
 
@@ -32,24 +33,23 @@ class Quiz extends React.Component {
 
     render(){
         const {cardIndex, correctCount} = this.state;
-    //passing props to QuizCard / QuizResult
     // need to get deckName, it's cards(Q&A), cardCount, navigation.
-        const cardCount = 3; //dummy to test logic
-        const deckName = 'Dummy deckName'; //dummy to test logic
-        const cards = [ //dummy to test logic
-            {question: 'dummyQ1', answer: 'dummyA1'}, //dummy to test logic
-            {question: 'dummyQ2', answer: 'dummyA2'}, //dummy to test logic
-            {question: 'dummyQ3', answer: 'dummyA3'}];//dummy to test logic
+        const {deckName, cards} = this.props;//'Dummy deckName'; //dummy to test logic
+        const cardCount = this.props.cards.length;//3; //dummy to test logic
+        // const cards = [ //dummy to test logic
+        //     {question: 'dummyQ1', answer: 'dummyA1'}, //dummy to test logic
+        //     {question: 'dummyQ2', answer: 'dummyA2'}, //dummy to test logic
+        //     {question: 'dummyQ3', answer: 'dummyA3'}];//dummy to test logic
 
         if (cardIndex < cardCount) {
             return(
                 <QuizCard
-                deckName={deckName}
-                card={cards[cardIndex]}
-                currentCardNum={cardIndex+1}
-                sumOfCards={cardCount}
-                handleCorrect={this.handleCorrect}
-                handleIncorrect={this.handleIncorrect}/>
+                    deckName={deckName}
+                    card={cards[cardIndex]}
+                    currentCardNum={cardIndex+1}
+                    sumOfCards={cardCount}
+                    handleCorrect={this.handleCorrect}
+                    handleIncorrect={this.handleIncorrect}/>
             );
         } 
         return(
@@ -61,4 +61,13 @@ class Quiz extends React.Component {
     }
 }
 
-export default Quiz;
+function mapStateToProps(state, {navigation}) {
+    const {deckName} = navigation.state.params;
+    return {
+        deckName,
+        cards: state[deckName].cards
+    }
+}
+
+
+export default connect(mapStateToProps)(Quiz);
