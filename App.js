@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Platform, StatusBar} from 'react-native';
 import {Constants} from 'expo';
 import {createMaterialTopTabNavigator, createBottomTabNavigator, createStackNavigator} from 'react-navigation';
-import {Ionicons, AntDesign, MaterialCommunityIcons, MaterialIcons} from '@expo/vector-icons';
+import {Ionicons, AntDesign, MaterialCommunityIcons, MaterialIcons, Octicons} from '@expo/vector-icons';
 
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -14,6 +14,7 @@ import AddNewDeck from './components/AddNewDeck';
 import DeckDetail from './components/DeckDetail';
 import Quiz from './components/Quiz';
 import AddCard from './components/AddCard';
+import EraseDecks from './components/EraseDecks';
 
 import {white, blue, gold, purple, red} from './utils/colors';
 
@@ -36,6 +37,13 @@ const TabsIos = createBottomTabNavigator({
     navigationOptions: {
       tabBarlabel: 'Add New Deck',
       tabBarIcon: ({tintColor}) => <AntDesign name='addfile' size={25} color={tintColor}/>
+    }
+  },
+  EraseDecks: {
+    screen: EraseDecks,
+    navigationOptions: {
+      tabBarlabel: 'Erase All Decks',
+      tabBarIcon: ({tintColor}) => <Octicons name='trashcan' size={25} color={tintColor}/>
     }
   },
 }, {
@@ -73,6 +81,13 @@ const TabsAndroid = createMaterialTopTabNavigator({
       tabBarIcon: ({tintColor}) => <MaterialIcons name='playlist-add' size={25} color={tintColor}/>
     }
   },
+  EraseDecks: {
+    screen: EraseDecks,
+    navigationOptions: {
+      tabBarlabel: 'Erase All Decks',
+      tabBarIcon: ({tintColor}) => <MaterialCommunityIcons name='delete-forever' size={25} color={tintColor}/>
+    }
+  },  
 }, {
     navigationOptions: {
       header: null,

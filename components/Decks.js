@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, View, FlatList, StyleSheet, Button} from 'react-native';
+import {Text, View, FlatList, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
-import {handleIntialData, eraseAllDecks} from '../actions';
+import {handleIntialData} from '../actions';
 import Deck from './Deck';
 import {blue, lightPurple} from '../utils/colors';
 
@@ -9,12 +9,6 @@ class Decks extends React.Component {
 
     componentDidMount (){
         this.props.dispatch(handleIntialData());
-    }
-
-    //test => move to own component
-    handleEraseDecks = () => {
-        const {dispatch} = this.props;
-        dispatch(eraseAllDecks());
     }
 
     renderItem = ({item}) => {
@@ -48,10 +42,6 @@ class Decks extends React.Component {
                     renderItem={this.renderItem}
                     keyExtractor={item => item.deckName}
                 />
-                <Button
-                    onPress={this.handleEraseDecks}
-                    title = "WIPE ALL DECKS!"
-                    color = "red"/>
             </View>
         );
     }
