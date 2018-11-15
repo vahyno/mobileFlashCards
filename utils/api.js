@@ -4,15 +4,14 @@ const FLASHCARDS_DECKS_STORAGE_KEY = 'MobileFlashCards:Decks';
 
 //deckname - string
 //cards - array
-//card - object
 
 //fetch all Decks
-export const retrieveDecks = () => {
+export const _retrieveDecks = () => {
     return AsyncStorage.getItem(FLASHCARDS_DECKS_STORAGE_KEY);
 }
 
 //submit entry -> a new deck
-export const addNewDeck = (deckName) => {
+export const _addNewDeck = (deckName) => {
     return AsyncStorage.mergeItem(
         FLASHCARDS_DECKS_STORAGE_KEY,
         JSON.stringify({
@@ -25,7 +24,7 @@ export const addNewDeck = (deckName) => {
 }
   
 //submit entry -> a new card to a specific deck
-export const addNewCardToDeck = (deckName, card) => {
+export const _addNewCardToDeck = (deckName, card) => {
     return AsyncStorage.getItem(FLASHCARDS_DECKS_STORAGE_KEY)
         .then((results)=> {
             const decks = JSON.parse(results);

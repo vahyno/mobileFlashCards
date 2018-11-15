@@ -1,62 +1,55 @@
 import React from 'react';
 import {Text, View, FlatList, StyleSheet} from 'react-native';
+import {connect} from 'react-redux';
+import {handleIntialData} from '../actions';
 import Deck from './Deck';
-import {blue} from '../utils/colors';
+import {blue, lightPurple} from '../utils/colors';
 
 class Decks extends React.Component {
 
     componentDidMount (){
         //todo get me all the decks
+        this.props.dispatch(handleIntialData());
     }
 
     renderItem = ({item}) => {
         return (
             <Deck
                 deckName={item.deckName}
-                cardCount={item.cards.length}
+                cardCount={item.cards? item.cards.length : 0}
             />
         )
     }
 
     render(){
         //todo: implement redux
-        //const {decks} = this.props;
-
+        const {decks} = this.props;
         //dummy data:
-        const decks = [
-            {
-              deckName: 'deckName 1',
-              cards: [1],
-            },
-            {
-              deckName: 'deckName 2',
-              cards: [1,2],
-            },
-            {
-              deckName: 'deckName 3',
-              cards: [1,2,3],
-            },
-            {
-                deckName: 'deckName 4',
-                cards: [1,2,3,4],
-              },
-              {
-                deckName: 'deckName 5',
-                cards: [1,2,3,4,5],
-              },
-              {
-                deckName: 'deckName 6',
-                cards: [],
-              }
-          ];
+        // const decks = [
+            // {
+            //   deckName: 'deckName 1',
+            //   cards: [1],
+            // }
+        //   ];
+
+        // if (!decks.length) {
+        //     return (
+        //         <View style={styles.noData}>
+        //             <Text style={{fontSize: 30}}>
+        //                 Please Add New Deck
+        //             </Text>
+        //         </View>
+        //     )
+        // }
 
         return(
             <View style={styles.container}>
-                <FlatList
+                <Text style={{backgroundColor: '#fff'}}>{JSON.stringify(decks)}</Text>
+                {/* <FlatList
                     data={decks}
                     renderItem={this.renderItem}
                     keyExtractor={item => item.deckName}
-                />
+                /> */}
             </View>
         );
     }
@@ -68,7 +61,21 @@ const styles = StyleSheet.create({
         padding: 20,
         paddingBottom: 0,
         backgroundColor: blue,
+    },
+    noData: {
+        flex:1, 
+        padding: 20,
+        paddingBottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: lightPurple,
     }
 });
 
-export default Decks;
+function mapStateToProps(state) {
+    return {
+        decks: Object.keys(state).map(deck => (state[deck])),
+    }
+}
+
+export default connect(mapStateToProps)(Decks);

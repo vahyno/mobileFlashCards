@@ -6,7 +6,8 @@ import {Ionicons, AntDesign, MaterialCommunityIcons, MaterialIcons} from '@expo/
 
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-
+import reducer from './reducers';
+import middleware from './middleware';
 
 import Decks from './components/Decks';
 import Deck from './components/Deck';
@@ -130,18 +131,22 @@ const MainNavigator = createStackNavigator({
   },
 });
 
+const store = createStore(reducer, middleware);
+
 export default class App extends React.Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-        <FlashCardStatusBar 
-          backgroundColor={red}
-          barStyle='light-content'/>
-        <MainNavigator />
-        {/* <DeckDetail/> */}
-        {/* <AddCard /> */}
-        {/* <Quiz /> */}
-      </View>
+      <Provider store={store}>
+        <View style={{flex: 1}}>
+          <FlashCardStatusBar 
+            backgroundColor={red}
+            barStyle='light-content'/>
+          <MainNavigator />
+          {/* <DeckDetail/> */}
+          {/* <AddCard /> */}
+          {/* <Quiz /> */}
+        </View>
+      </Provider>
     );
   }
 }

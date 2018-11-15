@@ -1,5 +1,9 @@
 import React from 'react';
 import {Text, TextInput, KeyboardAvoidingView, TouchableOpacity, StyleSheet} from 'react-native';
+import {handleAddNewDeck} from '../actions';
+import {connect} from 'react-redux';
+
+
 import {pink, yellow, grey, green} from '../utils/colors';
 
 class AddNewDeck extends React.Component {
@@ -10,7 +14,10 @@ class AddNewDeck extends React.Component {
 
     handleSubmit = () => {
         //todo create handle submit logic
-        alert('Submitted');
+        const {dispatch} = this.props;
+        const {deckName} = this.state;
+        
+        dispatch(handleAddNewDeck(deckName));
         this.setState({deckName: ''});
     }
     
@@ -73,4 +80,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AddNewDeck;
+export default connect()(AddNewDeck);

@@ -1,6 +1,6 @@
 import {ADD_NEW_DECK, ADD_NEW_CARD} from '../actions';
 
-export default function entries (state = {}, action) {
+export default function decksAndCards (state = {}, action) {
     switch(action.type) {
         case ADD_NEW_DECK:
             return {
@@ -14,7 +14,7 @@ export default function entries (state = {}, action) {
                     ...state[action.deckName],
                     cards: [
                         ...state[action.deckName].cards,
-                        card
+                        action.card
                     ]
                 }
             }
