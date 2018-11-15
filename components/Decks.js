@@ -16,6 +16,7 @@ class Decks extends React.Component {
             <Deck
                 deckName={item.deckName}
                 cardCount={item.cards? item.cards.length : 0}
+                navigation={this.props.navigation}
             />
         )   
     }

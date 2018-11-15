@@ -8,6 +8,7 @@ class Deck extends React.Component {
         return(
             <TouchableOpacity
                 style={styles.deck}
+                key={deckName}
                 onPress={() => navigation.navigate('DeckDetail', {deckName})}>
                 <Text style={styles.title}>
                     {deckName}

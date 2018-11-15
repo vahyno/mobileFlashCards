@@ -1,20 +1,23 @@
 import React from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {connect} from 'react-redux';
 import {pink, grey, gold, red} from '../utils/colors';
 
 class DeckDetail extends React.Component {
     render(){
-        //todo: get: navigation, deck name, #of cards
-        const {navigation} = this.props;
-        //todo navigation to add new card
-        // start quiz btn if #cardCount > 0 => navigation to Quiz.js
+        //todo: get: #of cards
+        const {deckName} = this.props;
+        
         //dummy
-        let deckName = 'Redux Fundamentals'
+        // let deckName = 'Redux Fundamentals'
         let cards = [1]
         // conect to Redux const {deckName, cards} = this.props;
 
         return(
             <View style={styles.container}>
+            <Text>{JSON.stringify(this.props.state)}</Text>
+            <Text>{`cards: ${this.props.cards}`}</Text>
+
                 <Text style={styles.title}>{deckName}</Text>
                 <Text style={styles.cardCount}>
                 { cards.length !== 1 
@@ -78,4 +81,13 @@ const styles = StyleSheet.create({
     }
 });
 
-export default DeckDetail;
+function mapStateToProps(state, {navigation}) {
+    const {deckName} = navigation.state.params;
+    return {
+        state, //delete 
+        deckName,
+        cards: state[deckName].cards,
+    }
+}
+
+export default connect(mapStateToProps)(DeckDetail);
