@@ -11,16 +11,15 @@ class AddCard extends React.Component {
     }
 
     handleSubmit = () => {
-        //todo create handle submit logic
-        const {dispatch, deckName} = this.props
+        const {dispatch, deckName, navigation} = this.props;
         const {question, answer} = this.state;
         const card = {question, answer};
         dispatch(handleAddNewCardToDeck(deckName, card));
-        alert('submitted');
         this.setState({
             question: '',
             answer: '',
         });
+        navigation.navigate('DeckDetail', {deckName});
     }
     
     render(){
