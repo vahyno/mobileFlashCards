@@ -16,7 +16,8 @@ class DeckDetail extends React.Component {
         return(
             <View style={styles.container}>
             <Text>{JSON.stringify(this.props.state)}</Text>
-            <Text>{`cards: ${this.props.cards}`}</Text>
+            <Text>----------------------------------</Text>
+            <Text>{`cards: ${JSON.stringify(this.props.cards)}`}</Text>
 
                 <Text style={styles.title}>{deckName}</Text>
                 <Text style={styles.cardCount}>

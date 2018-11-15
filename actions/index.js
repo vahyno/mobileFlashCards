@@ -56,3 +56,12 @@ export function handleAddNewDeck(deckName) {
             })
     }
 }
+
+export function handleAddNewCardToDeck(deckName, card) {
+    return (dispatch) => {
+        return _addNewCardToDeck(deckName, card)
+            .then(() => {
+                dispatch(addNewCard(deckName, card));
+            })
+    }
+}
