@@ -34,7 +34,7 @@ class Quiz extends React.Component {
     render(){
         const {cardIndex, correctCount} = this.state;
     // need to get deckName, it's cards(Q&A), cardCount, navigation.
-        const {deckName, cards} = this.props;//'Dummy deckName'; //dummy to test logic
+        const {deckName, cards, navigation} = this.props;//'Dummy deckName'; //dummy to test logic
         const cardCount = this.props.cards.length;//3; //dummy to test logic
         // const cards = [ //dummy to test logic
         //     {question: 'dummyQ1', answer: 'dummyA1'}, //dummy to test logic
@@ -56,7 +56,9 @@ class Quiz extends React.Component {
             <QuizResults
                 cardCount={cardCount}
                 correctCount={correctCount}
-                resetQuiz={this.resetQuiz}/>
+                resetQuiz={this.resetQuiz}
+                navigation={navigation}
+                deckName={deckName}/>
         );
     }
 }

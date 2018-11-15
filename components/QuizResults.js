@@ -3,9 +3,8 @@ import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 import {grey, green, lightBlue, lightPurple} from '../utils/colors';
 
 class QuizResults extends React.Component {
-    //todo: back to deck => navigation
     render(){
-        const {resetQuiz, correctCount, cardCount} = this.props;
+        const {resetQuiz, correctCount, cardCount, navigation, deckName} = this.props;
         const score = (correctCount/cardCount*100).toFixed(2);
         return(
             <View style={styles.container}>
@@ -20,7 +19,7 @@ class QuizResults extends React.Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={[styles.btn, {backgroundColor: lightPurple}]}
-                    onPress={()=> alert('Back to Deck')}>
+                    onPress={()=> navigation.navigate('DeckDetail', {deckName})}>
                     <Text style={styles.btnText}>
                         Back to Deck
                     </Text>
@@ -39,12 +38,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: '500',
-        fontSize: 25,
+        fontSize: 30,
         padding: 20,
     },
     score: {        
         fontWeight: '800',
-        fontSize: 25,
+        fontSize: 20,
         paddingBottom: 30,
 },
 btn: {
