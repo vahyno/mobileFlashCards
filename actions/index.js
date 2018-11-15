@@ -1,11 +1,14 @@
 export const ADD_NEW_DECK = 'ADD_NEW_DECK';
 export const ADD_NEW_CARD = 'ADD_NEW_CARD';
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
+export const ERASE_ALL_DECKS = 'ERASE_ALL_DECKS';
 
 import {
     _retrieveDecks, 
     _addNewDeck, 
-    _addNewCardToDeck} from '../utils/api';
+    _addNewCardToDeck,
+    _eraseAllDecks,
+} from '../utils/api';
 
 export function receiveDecks(decks) {
     return {
@@ -20,6 +23,12 @@ export function addNewDeck(deckName) {
         type: ADD_NEW_DECK,
         deckName,
         cards: []
+    }
+}
+
+export function eraseAllDecks() {
+    return {
+        type: ERASE_ALL_DECKS,
     }
 }
 
@@ -62,6 +71,15 @@ export function handleAddNewCardToDeck(deckName, card) {
         return _addNewCardToDeck(deckName, card)
             .then(() => {
                 dispatch(addNewCard(deckName, card));
+            })
+    }
+}
+
+export function handleEraseAllDecks() {
+    return (dispatch) => {
+        return _eraseAllDecks()
+            .then(() => {
+                dispatch(eraseAllDecks());
             })
     }
 }

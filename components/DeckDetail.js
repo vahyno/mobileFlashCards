@@ -5,20 +5,9 @@ import {pink, grey, gold, red} from '../utils/colors';
 
 class DeckDetail extends React.Component {
     render(){
-        //todo: get: #of cards
         const {deckName, cards, navigation} = this.props;
-        
-        //dummy
-        // let deckName = 'Redux Fundamentals'
-        //let cards = [1]
-        // conect to Redux const {deckName, cards} = this.props;
-
         return(
             <View style={styles.container}>
-            <Text>{JSON.stringify(this.props.state)}</Text>
-            <Text>----------------------------------</Text>
-            <Text>{`cards: ${JSON.stringify(this.props.cards)}`}</Text>
-
                 <Text style={styles.title}>{deckName}</Text>
                 <Text style={styles.cardCount}>
                 { cards.length !== 1 
@@ -85,7 +74,6 @@ const styles = StyleSheet.create({
 function mapStateToProps(state, {navigation}) {
     const {deckName} = navigation.state.params;
     return {
-        state: state[deckName],//delete 
         deckName,
         //cards: to prevent error when new deck is created
         cards: state[deckName] ? state[deckName].cards : []

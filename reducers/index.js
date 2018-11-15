@@ -2,6 +2,7 @@ import {
     ADD_NEW_DECK,
     RECEIVE_DECKS, 
     ADD_NEW_CARD,
+    ERASE_ALL_DECKS,
 } from '../actions';
 
 export default function decksAndCards (state = {}, action) {
@@ -17,6 +18,8 @@ export default function decksAndCards (state = {}, action) {
                 ...state,
                 ...action.decks
             }
+        case ERASE_ALL_DECKS:
+            return {}    
         case ADD_NEW_CARD:
             return {
                 ...state,

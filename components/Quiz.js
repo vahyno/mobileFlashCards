@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import QuizCard from './QuizCard';
 import QuizResults from './QuizResults';
 
-
 class Quiz extends React.Component {
     state={
         cardIndex: 0,
@@ -33,13 +32,8 @@ class Quiz extends React.Component {
 
     render(){
         const {cardIndex, correctCount} = this.state;
-    // need to get deckName, it's cards(Q&A), cardCount, navigation.
-        const {deckName, cards, navigation} = this.props;//'Dummy deckName'; //dummy to test logic
-        const cardCount = this.props.cards.length;//3; //dummy to test logic
-        // const cards = [ //dummy to test logic
-        //     {question: 'dummyQ1', answer: 'dummyA1'}, //dummy to test logic
-        //     {question: 'dummyQ2', answer: 'dummyA2'}, //dummy to test logic
-        //     {question: 'dummyQ3', answer: 'dummyA3'}];//dummy to test logic
+        const {deckName, cards, navigation} = this.props;
+        const cardCount = this.props.cards.length;
 
         if (cardIndex < cardCount) {
             return(
@@ -70,6 +64,5 @@ function mapStateToProps(state, {navigation}) {
         cards: state[deckName].cards
     }
 }
-
 
 export default connect(mapStateToProps)(Quiz);

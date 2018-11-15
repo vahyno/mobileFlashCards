@@ -13,7 +13,6 @@ class AddNewDeck extends React.Component {
     }
 
     handleSubmit = () => {
-        //todo create handle submit logic
         const {deckName} = this.state;
         const {dispatch, navigation} = this.props;
 

@@ -43,4 +43,8 @@ export const _addNewCardToDeck = (deckName, card) => {
         });
 }
 
+//removeItem()  //static removeItem(key: string, [callback]: ?(error: ?Error) => void)
 //remove decks
+export const _eraseAllDecks = () => {
+    return AsyncStorage.removeItem(FLASHCARDS_DECKS_STORAGE_KEY)
+}

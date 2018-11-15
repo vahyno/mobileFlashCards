@@ -10,11 +10,11 @@ import reducer from './reducers';
 import middleware from './middleware';
 
 import Decks from './components/Decks';
-import Deck from './components/Deck';
 import AddNewDeck from './components/AddNewDeck';
 import DeckDetail from './components/DeckDetail';
 import Quiz from './components/Quiz';
 import AddCard from './components/AddCard';
+
 import {white, blue, gold, purple, red} from './utils/colors';
 
 const FlashCardStatusBar = ({backgroundColor, ...props}) => (
@@ -142,12 +142,8 @@ export default class App extends React.Component {
             backgroundColor={red}
             barStyle='light-content'/>
           <MainNavigator />
-          {/* <DeckDetail/> */}
-          {/* <AddCard /> */}
-          {/* <Quiz /> */}
         </View>
       </Provider>
     );
   }
 }
-
