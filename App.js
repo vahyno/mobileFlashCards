@@ -16,7 +16,7 @@ import Quiz from './components/Quiz';
 import AddCard from './components/AddCard';
 import EraseDecks from './components/EraseDecks';
 
-import {white, blue, gold, purple, red} from './utils/colors';
+import {white, blue, gold, purple, red, black} from './utils/colors';
 
 const FlashCardStatusBar = ({backgroundColor, ...props}) => (
   <View style={{backgroundColor, height: Constants.statusBarHeight}}>
@@ -119,28 +119,29 @@ const MainNavigator = createStackNavigator({
   DeckDetail: {
     screen: DeckDetail,
     navigationOptions: {
-      headerTintColor: white,
+      headerTintColor: black,
       headerStyle: {
-        backgroundColor: blue
+        backgroundColor: gold,
       },
-      headerBackTitle: 'Back'
+      headerBackTitle: 'To DeckDetail'
     }
   },
   Quiz: {
     screen: Quiz,
     navigationOptions: {
-      headerTintColor: white,
+      headerTintColor: black,
       headerStyle: {
-        backgroundColor: blue
-      }
+        backgroundColor: gold,
+      },
+      headerBackTitle: 'To DeckDetail'
     }
   },
   AddCard: {
     screen: AddCard,
     navigationOptions: {
-      headerTintColor: white,
+      headerTintColor: black,
       headerStyle: {
-        backgroundColor: blue
+        backgroundColor: gold,
       }
     }
   },
@@ -149,6 +150,10 @@ const MainNavigator = createStackNavigator({
 const store = createStore(reducer, middleware);
 
 export default class App extends React.Component {
+  
+  componentDidMount(){
+    //todo implement notifications
+  }
   render() {
     return (
       <Provider store={store}>

@@ -32,14 +32,16 @@ class AddCard extends React.Component {
                     <Text style={styles.title}>{deckName}</Text>
                 </View>
                 <View>
-                    <Text style={styles.formTitle}>Create Question:</Text>
+                    <Text style={styles.formTitle}>Please enter question:</Text>
                     <TextInput
+                        placeholder='Question'
                         style={styles.inputField} 
                         value={question} 
                         onChangeText={(text) => this.setState({question: text})}
                         />
-                    <Text style={styles.formTitle}>Create Answer:</Text>
+                    <Text style={styles.formTitle}>Please enter answer:</Text>
                     <TextInput
+                        placeholder='Answer'
                         style={styles.inputField} 
                         value={answer} 
                         onChangeText={(text) => this.setState({answer: text})}

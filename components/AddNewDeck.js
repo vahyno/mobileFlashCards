@@ -25,8 +25,9 @@ class AddNewDeck extends React.Component {
         const {deckName} = this.state;
         return(
             <KeyboardAvoidingView style={styles.container}>
-                <Text style={styles.title}>Name your deck:</Text>
+                <Text style={styles.title}>What is the title of your new deck?</Text>
                 <TextInput
+                    placeholder='Deck Title'
                     style={styles.inputField} 
                     value={deckName} 
                     onChangeText={(text) => this.setState({deckName: text})}
@@ -52,14 +53,14 @@ const styles = StyleSheet.create({
     title: {
         marginTop: 100,
         fontWeight: '500',
-        fontSize: 25,
+        fontSize: 20,
         padding: 10,
     },
     inputField: {
         borderRadius: 5,
         width: 300,
         padding: 10,
-        marginTop: 30,
+        marginTop: 20,
         marginBottom: 30,
         backgroundColor: yellow,
         fontSize: 20,

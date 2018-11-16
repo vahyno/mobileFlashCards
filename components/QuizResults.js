@@ -3,6 +3,10 @@ import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 import {grey, green, lightBlue, lightPurple} from '../utils/colors';
 
 class QuizResults extends React.Component {
+    
+    componentDidMount(){
+        //implement notificatins => reset the cycle
+    }
     render(){
         const {resetQuiz, correctCount, cardCount, navigation, deckName} = this.props;
         const score = (correctCount/cardCount*100).toFixed(2);

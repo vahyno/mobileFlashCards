@@ -50,11 +50,5 @@ const styles = StyleSheet.create({
     }
 });
 
-function mapStateToProps() {
-    return {
-
-    }
-}
-
-export default connect(mapStateToProps)(EraseDecks);
+export default connect()(EraseDecks);
 
