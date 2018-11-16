@@ -1,13 +1,29 @@
 import React from 'react';
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, View, TouchableOpacity, StyleSheet, Animated} from 'react-native';
 import {connect} from 'react-redux';
 import {pink, grey, gold, red} from '../utils/colors';
 
 class DeckDetail extends React.Component {
+    state= {
+        opacity: new Animated.Value(0),
+    }
+
+    componentDidMount(){
+        const {opacity} = this.state;
+        Animated.timing(                  
+            opacity,            
+            {
+              toValue: 1,                   
+              duration: 1500,              
+            }
+          ).start();         
+    }
+    
     render(){
         const {deckName, cards, navigation} = this.props;
+        const {opacity} = this.state;
         return(
-            <View style={styles.container}>
+            <Animated.View style={[styles.container, {opacity: opacity}]}>
                 <Text style={styles.title}>{deckName}</Text>
                 <Text style={styles.cardCount}>
                 { cards.length !== 1 
@@ -31,7 +47,7 @@ class DeckDetail extends React.Component {
                         Add New Card
                     </Text>
                 </TouchableOpacity>
-            </View>
+            </Animated.View>
         );
     }
 }

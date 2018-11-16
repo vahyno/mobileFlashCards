@@ -1,33 +1,44 @@
 import React from 'react';
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, View, TouchableOpacity, StyleSheet, Animated} from 'react-native';
 import {grey, green, lightBlue, lightPurple} from '../utils/colors';
 
 class QuizResults extends React.Component {
-    
+    state={
+        opacity: new Animated.Value(0),
+        width: new Animated.Value(0),
+        height: new Animated.Value(0),
+    }
     componentDidMount(){
+        const {opacity, width,height} = this.state;
+        Animated.timing(opacity,{toValue: 1, duration: 1500}).start();
+        Animated.spring(width,{toValue: 300, speed: 1}).start();
+        Animated.spring(height,{toValue: 300, speed: 1}).start();
         //implement notificatins => reset the cycle
     }
     render(){
+        const {opacity, width, height} = this.state;
         const {resetQuiz, correctCount, cardCount, navigation, deckName} = this.props;
         const score = (correctCount/cardCount*100).toFixed(2);
         return(
             <View style={styles.container}>
-                <Text style={styles.title}>Quiz Complete</Text>
-                <Text style={styles.score}>{`Score ${score}%`}</Text>
-                <TouchableOpacity
-                    style={[styles.btn, {backgroundColor: lightBlue}]}
-                    onPress={resetQuiz}>
-                    <Text style={styles.btnText}>
-                        Restart Quiz
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={[styles.btn, {backgroundColor: lightPurple}]}
-                    onPress={()=> navigation.navigate('DeckDetail', {deckName})}>
-                    <Text style={styles.btnText}>
-                        Back to Deck
-                    </Text>
-                </TouchableOpacity>
+                <Animated.View style={{alignItems: 'center', opacity, width, height}}>
+                    <Text style={styles.title}>Quiz Complete</Text>
+                    <Text style={styles.score}>{`Score ${score}%`}</Text>
+                    <TouchableOpacity
+                        style={[styles.btn, {backgroundColor: lightBlue}]}
+                        onPress={resetQuiz}>
+                        <Text style={styles.btnText}>
+                            Restart Quiz
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[styles.btn, {backgroundColor: lightPurple}]}
+                        onPress={()=> navigation.navigate('DeckDetail', {deckName})}>
+                        <Text style={styles.btnText}>
+                            Back to Deck
+                        </Text>
+                    </TouchableOpacity>
+                </Animated.View>
             </View>
         );
     }
