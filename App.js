@@ -16,6 +16,7 @@ import Quiz from './components/Quiz';
 import AddCard from './components/AddCard';
 import EraseDecks from './components/EraseDecks';
 
+import {setLocalNotification} from './utils/notifications';
 import {white, blue, gold, purple, red, black} from './utils/colors';
 
 const FlashCardStatusBar = ({backgroundColor, ...props}) => (
@@ -152,7 +153,7 @@ const store = createStore(reducer, middleware);
 export default class App extends React.Component {
   
   componentDidMount(){
-    //todo implement notifications
+    setLocalNotification();
   }
   render() {
     return (

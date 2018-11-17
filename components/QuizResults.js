@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, View, TouchableOpacity, StyleSheet, Animated} from 'react-native';
+import {setLocalNotification, clearLocalNotification} from '../utils/notifications';
 import {grey, green, lightBlue, lightPurple} from '../utils/colors';
 
 class QuizResults extends React.Component {
@@ -13,7 +14,8 @@ class QuizResults extends React.Component {
         Animated.timing(opacity,{toValue: 1, duration: 1500}).start();
         Animated.spring(width,{toValue: 300, speed: 1}).start();
         Animated.spring(height,{toValue: 300, speed: 1}).start();
-        //implement notificatins => reset the cycle
+        clearLocalNotification().then(setLocalNotification);
+
     }
     render(){
         const {opacity, width, height} = this.state;
